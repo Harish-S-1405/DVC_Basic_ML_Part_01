@@ -109,6 +109,32 @@ touch src/stage_01_load_save.py src/utils/all_utils.py
 ```
 content of both these files can be refererd from the reference given
 
+## ARgument Parser
+
+``` bash
+args=argparse.ArgumentParser()
+
+args.add_argument("--config",'-c',default="config/config.yaml")
+
+parsed_args = args.parse_args()
+
+get_data(config_path=parsed_args.config)
+```
+
+explanation:
+
+``` bash
+This code is an example of using argparse to parse command line arguments in a Python script. The script starts by creating an argument parser object args using argparse.ArgumentParser().
+
+Then, it adds an argument --config (or -c) to the parser object using args.add_argument(). This argument allows the user to specify a configuration file path when running the script. The default value is set to "config/config.yaml".
+
+Next, the script calls args.parse_args() to parse the command line arguments passed to the script. The parsed arguments are stored in the parsed_args variable.
+
+Finally, the script calls the function get_data and passes the config_path argument as parsed_args.config. This means that the value of config_path will be the value specified by the user for the --config argument. If the user does not specify the --config argument, the default value "config/config.yaml" will be used instead.
+
+Note that the script is wrapped in if __name__ == '__main__': to ensure that the script is only executed if it is run as the main program, and not imported as a module into another script.
+```
+
 
 ## STEP 10: create the dvc.yaml file and add the stage 01:
 ```bash
@@ -139,3 +165,4 @@ git add .
 git commit -m "stage 01 added"
 git push origin main
 ```
+
